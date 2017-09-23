@@ -36,16 +36,16 @@ class Tick extends Component {
                 onPause={() => console.log('Paused')}
                 onResume={() => console.log('Resumed')}
                 onStop={() => console.log('Stopped')}
-                onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })} />
+                onFinishedPlaying={this.onFinishedPlaying} />
         );
     }
 
     play() {
-        this.setState({ status: Sound.status.PLAYING});
+        this.setState({ status: Sound.status.PLAYING });
     }
 
     stop() {
-        this.setState({ status: Sound.status.STOPPED});
+        this.setState({ status: Sound.status.STOPPED });
     }
 
     handleSongLoading() {
@@ -61,7 +61,13 @@ class Tick extends Component {
     }
 
     componentWillUnmount() {
-        this.setState({ status: Sound.status.STOPPED});
+        this.setState({ status: Sound.status.STOPPED });
+    }
+
+    onFinishedPlaying = () => {
+        console.log('finished playing');
+
+        this.setState({ status: Sound.status.STOPPED });
     }
 }
 

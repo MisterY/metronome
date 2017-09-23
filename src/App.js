@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Tick from './Tick';
+//import Tick from './TickSound';
 //import sound from './DirectSound';
 import Inputs from './Inputs';
+import Audio from './TickAudio';
+//import ReactAudioPlayer from 'react-audio-player';
+//import SimpleAudio from './SimpleAudio';
 
 class App extends Component {
   constructor(prop) {
@@ -26,9 +29,22 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <Tick ref={(tick) => { this._tick = tick; }} />
+        {/* <Click ref={(component) => { this._tick = component; }} /> */}
+        {/* <ReactAudioPlayer
+          src={soundFile}
+          autoPlay={false}
+          ref={(player) => { this._tick = player; }}
+          onPlay={() => console.log('playing?')}
+          onError={() => console.log('error')}
+          preload='auto'
+          controls
+        /> */}
+        {/* controls loop={true} */}
+        {/* <SimpleAudio ref={(component) => { this._tick = component; }}  /> */}
 
         <Inputs />
+
+        <Audio ref={(component) => { this._tick = component; }} />
 
         <button onClick={this.tick}>Tick</button>
         <button onClick={this.stop}>Stop</button>
@@ -42,6 +58,7 @@ class App extends Component {
   }
 
   stop = () => {
+    console.log('stopping');
     this._tick.stop();
   }
 }
