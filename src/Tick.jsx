@@ -3,6 +3,12 @@ import Sound from 'react-sound';
 import soundFile from './tick.wav';
 
 class Tick extends Component {
+    // constructor(props) {
+    //     super(props);
+
+    //     // do any initialization here.
+    // }
+
     render() {
         return (
             // <Sound
