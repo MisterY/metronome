@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Tick from './Tick';
+//import Tick from './Tick';
 //import sound from './DirectSound';
 import Ui from './MetronomeUI';
 
@@ -20,8 +20,14 @@ class App extends Component {
         {/* <Tick /> */}
 
         <Ui />
+
+        <button onClick={this.tick}>Tick</button>
       </div>
     );
+  }
+
+  tick = () => {
+    console.log('tick!');
   }
 }
 

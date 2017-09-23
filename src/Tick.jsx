@@ -3,11 +3,14 @@ import Sound from 'react-sound';
 import soundFile from './tick.wav';
 
 class Tick extends Component {
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
 
-    //     // do any initialization here.
-    // }
+        this.options = {
+            state = Sound.status.STOPPED
+        }
+        // Sound.status.PLAYING
+    }
 
     render() {
         return (
@@ -22,7 +25,7 @@ class Tick extends Component {
 
             <Sound
                 url={soundFile}
-                playStatus={Sound.status.PLAYING}
+                playStatus={this.options.state}
                 playFromPosition={0}
                 //volume={volume}
                 loop={false}

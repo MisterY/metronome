@@ -11,12 +11,12 @@
   background-color: #222;
   height: 150px;
   padding: 20px;
-  /* color: white; */
-  color: antiquewhite;
+  color: beige; 
 }
 
 .App-intro {
   font-size: large;
+  background-color: antiquewhite;
 }
 
 @keyframes App-logo-spin {
