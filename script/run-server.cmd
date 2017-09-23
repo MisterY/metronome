@@ -1,9 +1,11 @@
 @echo off
 
-pushd ..\src
+pushd ..
 
 echo running in %cd%
 
-http-server
+:: http-server
+:: npm start
+yarn start
 
 popd

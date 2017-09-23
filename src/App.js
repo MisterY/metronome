@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import tick from './tick.wav';
-import sound from 'sound';
+//import tick from './tick.wav';
+//import Tick from './Sound';
+//var sound = require('Sound');
+import sound from './DirectSound';
 
 class App extends Component {
   render() {
@@ -15,6 +17,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+
+        {/* <Tick /> */}
+        <sound />
       </div>
     );
   }
