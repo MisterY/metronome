@@ -6,10 +6,9 @@ class Tick extends Component {
     constructor(props) {
         super(props);
 
-        this.options = {
-            state = Sound.status.STOPPED
-        }
-        // Sound.status.PLAYING
+        this.state = {
+            status: Sound.status.STOPPED
+        };
     }
 
     render() {
@@ -25,7 +24,7 @@ class Tick extends Component {
 
             <Sound
                 url={soundFile}
-                playStatus={this.options.state}
+                playStatus={this.state.status}
                 playFromPosition={0}
                 //volume={volume}
                 loop={false}
@@ -39,12 +38,28 @@ class Tick extends Component {
         );
     }
 
+    play() {
+        this.setState({ status: Sound.status.PLAYING});
+    }
+
+    stop() {
+        this.setState({ status: Sound.status.STOPPED});
+    }
+
     handleSongLoading() {
         console.log("song loading");
     }
 
     handleSongPlaying() {
         console.log("song playing");
+    }
+
+    componentDidMount() {
+
+    }
+
+    componentWillUnmount() {
+        this.setState({ status: Sound.status.STOPPED});
     }
 }
 

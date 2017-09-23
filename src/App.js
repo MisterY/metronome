@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import Tick from './Tick';
+import Tick from './Tick';
 //import sound from './DirectSound';
 import Ui from './MetronomeUI';
 
@@ -17,17 +17,23 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        {/* <Tick /> */}
+        <Tick ref={(tick) => { this._tick = tick; }} />
 
         <Ui />
 
         <button onClick={this.tick}>Tick</button>
+        <button onClick={this.stop}>Stop</button>
       </div>
     );
   }
 
   tick = () => {
     console.log('tick!');
+    this._tick.play();
+  }
+
+  stop = () => {
+    this._tick.stop();
   }
 }
 
