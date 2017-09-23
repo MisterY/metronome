@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class MetronomeUI extends Component {
+class Inputs extends Component {
     // constructor(prop) {
     //     super(prop);
 
@@ -33,4 +33,4 @@ class MetronomeUI extends Component {
     // }
 }
 
-export default MetronomeUI;
+export default Inputs;

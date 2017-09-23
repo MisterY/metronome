@@ -3,9 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 import Tick from './Tick';
 //import sound from './DirectSound';
-import Ui from './MetronomeUI';
+import Inputs from './Inputs';
 
 class App extends Component {
+  constructor(prop) {
+    super(prop);
+
+    // initialize options.
+    this.state = {
+      tempo: 100
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,7 +28,7 @@ class App extends Component {
 
         <Tick ref={(tick) => { this._tick = tick; }} />
 
-        <Ui />
+        <Inputs />
 
         <button onClick={this.tick}>Tick</button>
         <button onClick={this.stop}>Stop</button>

@@ -7,7 +7,8 @@ class Tick extends Component {
         super(props);
 
         this.state = {
-            status: Sound.status.STOPPED
+            status: props.playStatus ? props.playStatus : Sound.status.STOPPED,
+            loop: props.loop ? props.loop : false
         };
     }
 
@@ -23,11 +24,12 @@ class Tick extends Component {
             // />
 
             <Sound
+                autoLoad={true}
                 url={soundFile}
                 playStatus={this.state.status}
-                playFromPosition={0}
+                //playFromPosition={0}
                 //volume={volume}
-                loop={false}
+                loop={this.state.loop}
                 onLoading={({ bytesLoaded, bytesTotal }) => console.log(`${bytesLoaded / bytesTotal * 100}% loaded`)}
                 onLoad={() => console.log('Loaded')}
                 onPlaying={({ position }) => console.log(position)}
