@@ -1,5 +1,3 @@
-//var Sound = require('react-sound').default;
-
 import React, { Component } from 'react';
 import Sound from 'react-sound';
 
@@ -15,6 +13,14 @@ class Tick extends Component {
                 onFinishedPlaying={this.handleSongFinishedPlaying}
             />
         );
+    }
+
+    handleSongLoading() {
+        console.log("song loading");
+    }
+
+    handleSongPlaying() {
+        console.log("song playing");
     }
 }
 

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import tick from './tick.wav';
-//import Tick from './Sound';
+import Tick from './Tick';
 //var sound = require('Sound');
-import sound from './DirectSound';
+//import sound from './DirectSound';
 
 class App extends Component {
   render() {
@@ -18,8 +18,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        {/* <Tick /> */}
-        <sound />
+        <Tick />
+        {/* playStatus=Sound.status.PLAYING */}
       </div>
     );
   }
