@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import tick from './tick.wav';
 import Tick from './Tick';
-//var sound = require('Sound');
 //import sound from './DirectSound';
 
 class App extends Component {
