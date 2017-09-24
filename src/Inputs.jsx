@@ -57,7 +57,7 @@ class Inputs extends Component {
      * Saves the new tempo value and notifies the parent.
      */
     setTempo = (newValue) => {
-        console.log("Input:selected tempo " + newValue);
+        //console.log("Input:selected tempo " + newValue);
 
         this.setState({ tempo: newValue });
         this._tempoChanged(newValue);

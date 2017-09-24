@@ -24,7 +24,7 @@ class Metronome extends Component {
     }
 
     setTempo = (tempo) => {
-        console.log("Metronome:setTempo " + tempo);
+        //console.log("Metronome:setTempo " + tempo);
 
         this.setTempoValues(tempo);
 
