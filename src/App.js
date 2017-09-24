@@ -91,6 +91,9 @@ class App extends Component {
   onKeyDown = (e) => {
     console.log(e);
 
+    // use 300ms buffer when processing keyboard events.
+    // todo: react-throttle
+
     switch (e.key) {
       case "ArrowLeft":
         // decrease tempo
@@ -138,7 +141,7 @@ class App extends Component {
 
   onTempoChanged = (tempo) => {
     if (tempo < 0) tempo = 0;
-    
+
     // update the metronome
     this._metronome.setTempo(tempo);
     this._tempoSelector.setTempo(tempo);
