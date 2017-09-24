@@ -15,17 +15,22 @@ class Inputs extends Component {
     render() {
         return (
             <div>
-                <div>Tempo</div>
+                <h2>Tempo</h2>
+
+                <div> 
+
+                </div>
 
                 <Knob
                     value={this.state.tempo}
                     onChange={this.changeTempo}
                     onChangeEnd={this.notifyParent}
                     min={20}
-                    max={300}
+                    max={250}
                     value={this.state.tempo}
                     thickness={0.15}
                     fgColor="black"
+                    bgColor="darkgray"
                     angleArc={330}
                     angleOffset={-165}
                 />
