@@ -14,7 +14,7 @@ class App extends Component {
 
     // initialize options.
     this.state = {
-      tempo: 100
+      //tempo: 100
     }
   }
 
@@ -42,12 +42,15 @@ class App extends Component {
         {/* controls loop={true} */}
         {/* <SimpleAudio ref={(component) => { this._tick = component; }}  /> */}
 
-        <Inputs />
+        <Inputs ref={(ui) => { this._ui = ui; }} />
 
         <Audio ref={(component) => { this._tick = component; }} />
 
         <button onClick={this.tick}>Tick</button>
-        <button onClick={this.stop}>Stop</button>
+        <div>
+          <button onClick={this.start}>Start</button>
+          <button onClick={this.stop}>Stop</button>
+        </div>
       </div>
     );
   }
@@ -55,6 +58,12 @@ class App extends Component {
   tick = () => {
     console.log('tick!');
     this._tick.play();
+  }
+
+  start = () => {
+    // calculate time.
+    //this._ui.getState
+    // fire up interval.
   }
 
   stop = () => {

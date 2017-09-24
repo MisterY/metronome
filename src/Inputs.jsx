@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 
 class Inputs extends Component {
-    // constructor(prop) {
-    //     super(prop);
+    constructor(prop) {
+        super(prop);
 
-    //     // This binding is necessary to make `this` work in the callback
-    //     //this.onTempoBlur = this.onTempoBlur.bind(this);
-    // }
+        // This binding is necessary to make `this` work in the callback
+        this.state = {
+            tempo: prop.tempo ? prop.tempo : 100
+        }
+    }
 
     render() {
         return (
             <div>
                 <div>Tempo</div>
-                <input type='number' onBlur={this.onTempoBlur} />
+                <input type='number' defaultValue={this.state.tempo} onBlur={this.onTempoBlur} />
 
             </div>
         );
