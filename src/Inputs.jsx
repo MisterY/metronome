@@ -20,20 +20,35 @@ class Inputs extends Component {
 
                 <div>
                     <ButtonGroup>
-                        <TempoButton tempo={30} title="Grave" onSelect={this.setTempo} />
-                        <TempoButton tempo={40} title="Largo" onSelect={this.setTempo} />
+                        <TempoButton tempo={30} title="Adagieto" onSelect={this.setTempo} />
+                        <TempoButton tempo={35} title="Adagio" onSelect={this.setTempo} />
+                        <TempoButton tempo={40} title="Larghetto" onSelect={this.setTempo} />
+                        <TempoButton tempo={45} title="Largo" onSelect={this.setTempo} />
                         <TempoButton tempo={50} title="Lento" onSelect={this.setTempo} />
-                        <TempoButton tempo={70} title="Adagio" onSelect={this.setTempo} />
-                        <TempoButton tempo={95} title="Andante" onSelect={this.setTempo} />
-                        <TempoButton tempo={100} title="Andantino" onSelect={this.setTempo} />
-                        <TempoButton tempo={112} title="Moderato" onSelect={this.setTempo} />
-                        <TempoButton tempo={130} title="Allegretto" onSelect={this.setTempo} />
-                        <TempoButton tempo={143} title="Allegro" onSelect={this.setTempo} />
-                        <TempoButton tempo={163} title="Vivace" onSelect={this.setTempo} />
+                        <TempoButton tempo={55} title="Grave" onSelect={this.setTempo} />
+                        <TempoButton tempo={60} title="Sostenuto" onSelect={this.setTempo} />
+                        <TempoButton tempo={65} title="Adagissimo" onSelect={this.setTempo} />
+                        <TempoButton tempo={70} title="Larghissimo" onSelect={this.setTempo} />
+                    </ButtonGroup>
+                    <div>
+                        {/* Moderate */}
+                        <TempoButton tempo={75} title="Andante" onSelect={this.setTempo} />
+                    </div>
+                    <ButtonGroup>
+                        <TempoButton tempo={80} title="Andantino" onSelect={this.setTempo} />
+                        <TempoButton tempo={85} title="Allegretto" onSelect={this.setTempo} />
+                        <TempoButton tempo={90} title="Moderato" onSelect={this.setTempo} />
+                        <TempoButton tempo={100} title="Allegro" onSelect={this.setTempo}
+                        />
+                        <TempoButton tempo={110} title="Animato" onSelect={this.setTempo} />
+                        <TempoButton tempo={120} title="Agitato" onSelect={this.setTempo} />
+                        <TempoButton tempo={130} title="Veloce" onSelect={this.setTempo} />
+                        <TempoButton tempo={140} title="Mosso" onSelect={this.setTempo} />
+                        <TempoButton tempo={150} title="Vivo" onSelect={this.setTempo} />
+                        <TempoButton tempo={160} title="Vivace" onSelect={this.setTempo} />
                         <TempoButton tempo={180} title="Presto" onSelect={this.setTempo} />
-                        <TempoButton tempo={208} title="Prestissimo" onSelect={this.setTempo} />
-
-                        <Button color="link">Allegro assai</Button>
+                        <TempoButton tempo={200} title="Prestissimo" onSelect={this.setTempo} />
+                        <TempoButton tempo={230} title="Vivacissimo" onSelect={this.setTempo} />
                     </ButtonGroup>
                 </div>
                 <Knob

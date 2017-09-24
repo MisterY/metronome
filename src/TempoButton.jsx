@@ -14,7 +14,8 @@ class TempoButton extends Component {
 
     render() {
         return(
-            <Button color="link" onClick={this.onSelected}>{this.state.title}</Button>
+            <Button outline onClick={this.onSelected}>{this.state.title}</Button>
+            // color="link"
         );
     }
 
