@@ -10,15 +10,23 @@ import Audio from './TickAudio';
 //import SimpleAudio from './SimpleAudio';
 import Metronome from './Metronome';
 import { Button, ButtonGroup } from 'reactstrap';
-import keydown from 'react-keydown';
+//import keydown from 'react-keydown';
 import PlayButton from './PlayButton';
 
 //let MetronomeWorker = require("Worker.js");
 
+//@keydown
 class App extends Component {
   // constructor(prop) {
   //   super(prop);
   // }
+
+  componentWillReceiveProps( { keydown } ) {
+    if ( keydown.event ) {
+      // inspect the keydown event and decide what to do
+      console.log( keydown.event.which );
+    }
+  }
 
   render() {
     return (
