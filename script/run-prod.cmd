@@ -3,4 +3,4 @@
 :: - build prod version
 :: - yarn global add serve
 
-serve -s build
+serve -s ..\docs
