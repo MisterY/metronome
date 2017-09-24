@@ -24,11 +24,11 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div style={{ marginLeft: 2 + "em" }}>
-            <h1>My Metronome</h1>
+            <h1>Alen's Metronome</h1>
           </div>
         </div>
         <p className="App-intro">
-          This is a JavaScript metronome.
+          This is a metronome implemented in JavaScript using ReactJS.
         </p>
 
         {/* <SimpleAudio ref={(component) => { this._tick = component; }}  /> */}
@@ -39,14 +39,18 @@ class App extends Component {
 
         <button onClick={this.tick}>Tick</button>
         <div>
-          <Button>
+          <Button
+            ref={(component) => { this._playButton = component; }} >
             <FontAwesome
-              className='super-crazy-colors'
-              name='rocket'
-              size='2x'
-              spin
-              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }} />
-            Start</Button>
+              //className='super-crazy-colors'
+              name='play'
+              //size='2x'
+              //spin
+              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              onClick={this.onPlayClicked}
+            />
+            &nbsp;Start
+            </Button>
           <button onClick={this.start}>Start</button>
           <button onClick={this.stop}>Stop</button>
         </div>
@@ -59,8 +63,17 @@ class App extends Component {
     this._tick.play();
   }
 
+  onPlayClicked = (e) => {
+    // track state
+    this.start()
+    // or stop()
+  }
+
   start = () => {
     this._metronome.start();
+
+    // update UI
+    //this._playButton.
   }
 
   stop = () => {
@@ -82,3 +95,4 @@ class App extends Component {
 }
 
 export default App;
+s
