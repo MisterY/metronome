@@ -38,7 +38,7 @@ class App extends Component {
           </div>
         </div>
         <p className="App-intro">
-          This is a metronome implemented in JavaScript using ReactJS.
+          This is a metronome implemented in JavaScript using ReactJS. You can control it using keyboard (space = start/stop, cursor keys for volume and tempo control).
         </p>
 
         <Metronome
