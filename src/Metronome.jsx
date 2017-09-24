@@ -6,11 +6,17 @@ class Metronome extends Component {
 
         // get callbacks and invoke them when the timer fires.
         this._callback = prop.onTick;
-        this.state = {
-            intervalId: 0,
-            tempo: prop.tempo,
-            interval: 100
-        };
+        this._intervalId = undefined;
+        this._tempo = prop.tempo;
+        this._interval = this.getInterval(prop.tempo);
+    }
+
+    componentWillUnmount = () => {
+         this.stop()
+    }
+
+    getInterval(tempo) {
+        return 60000 / tempo;
     }
 
     render() {
@@ -23,35 +29,38 @@ class Metronome extends Component {
         this.setTempoValues(tempo);
 
         // reset any running timer
-        if (this.state.intervalId) {
+        if (this._intervalId) {
             this.stop();
             this.start();
         }
     }
 
     setTempoValues = (tempo) => {
-        this.setState({ tempo: tempo });
+        this._tempo = tempo;
         // 60000 ms per minute / tempo
-        this.setState({ interval: 60000 / tempo });
+        this._interval = this.getInterval(tempo);
     }
 
     start = () => {
         // do not start a new metronome if one is already running.
-        if (this.state.intervalId) return;
+        if (this._intervalId) return;
 
-        console.log('starting the metronome at ' + this.state.tempo);
+        console.log('starting the metronome at ' + this._tempo);
         // The first time play immediately. Then, on interval.
         this._callback();
 
-        var id = setInterval(this.onInterval, this.state.interval);
-        //this.setState({ intervalId: id });
-        this.setState({ intervalId: id });
+        var id = setInterval(this.onInterval, this._interval);
+        this._intervalId = id;
+
+        console.log("started timer " + id);
     }
 
     stop = () => {
-        clearInterval(this.state.intervalId);
+        console.log("stopping timer " + this._intervalId);
+
+        clearInterval(this._intervalId);
         // reset id
-        this._intervalId = 0;
+        this._intervalId = undefined;
     }
 
     onInterval = () => {
