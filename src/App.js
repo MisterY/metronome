@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import logo from './static/wittner.jpg';
 import './App.css';
-//import Tick from './TickSound';
-//import sound from './DirectSound';
 import Inputs from './Inputs';
-import Audio from './TickAudio';
-//import ReactAudioPlayer from 'react-audio-player';
-//import SimpleAudio from './SimpleAudio';
+import TickAudio from './TickAudio';
 import Metronome from './Metronome';
-import { Button, ButtonGroup } from 'reactstrap';
-import keydown from 'react-keydown';
 import PlayButton from './PlayButton';
+import Slider from 'react-rangeslider'
+import 'react-rangeslider/lib/index.css'
 
 //let MetronomeWorker = require("Worker.js");
 
-//@keydown
 class App extends Component {
-  // constructor(prop) {
-  //   super(prop);
-  // }
+  constructor(prop) {
+    super(prop);
+
+    this.state = {
+      volume: 75
+    };
+  }
 
   componentWillMount = () => {
     document.addEventListener("keydown", this.onKeyDown, false);
@@ -28,13 +27,6 @@ class App extends Component {
   componentWillUnmount = () => {
     document.removeEventListener("click", this.onKeyDown, false);
   }
-
-  // componentWillReceiveProps( { keydown } ) {
-  //   if ( keydown.event ) {
-  //     // inspect the keydown event and decide what to do
-  //     console.log( keydown.event.which );
-  //   }
-  // }
 
   render() {
     return (
@@ -49,16 +41,43 @@ class App extends Component {
           This is a metronome implemented in JavaScript using ReactJS.
         </p>
 
-        <Inputs ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
-        <Metronome ref={(m) => { this._metronome = m; }} onTick={this.onMetronomeClick} tempo={100} />
-        <Audio
+        <Inputs 
+          ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
+        <Metronome 
+          ref={(m) => { this._metronome = m; }} 
+          onTick={this.onMetronomeClick} tempo={100} />
+        <TickAudio
+          volume={this.state.volume / 100}
           ref={(component) => { this._tick = component; }} />
 
         <PlayButton
           ref={(component) => { this._playButton = component; }}
           onClick={this.onPlayButtonClick} />
+
+        <div className='slider orientation-reversed'>
+          <div className='slider-group'>
+            <div className='slider-vertical'>
+              <Slider
+                min={0}
+                max={100}
+                value={this.state.volume}
+                orientation="vertical"
+                onChangeStart={this.handleChangeStart}
+                onChange={this.changeVolume}
+                onChangeComplete={this.handleChangeComplete} />
+            </div>
+          </div>
+        </div>
+
       </div>
     );
+  }
+
+  changeVolume = (value) => {
+    console.log("volume: " + value);
+
+    this.setState({ volume: value});
+    this._tick.setVolume(value / 100);
   }
 
   onKeyDown = (e) => {
@@ -67,6 +86,8 @@ class App extends Component {
     switch (e.key) {
       case " ":
         this._playButton.toggle();
+        break;
+      default:
         break;
     }
   }

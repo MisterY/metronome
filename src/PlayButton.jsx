@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-
-var FontAwesome = require('react-fontawesome');
+import FontAwesome from 'react-fontawesome';
 
 class PlayButton extends Component {
     constructor(prop) {

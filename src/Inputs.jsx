@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Knob from 'react-canvas-knob';
-import { Button, ButtonGroup } from 'reactstrap';
+import { ButtonGroup } from 'reactstrap';
 import TempoButton from './TempoButton';
 
 class Inputs extends Component {

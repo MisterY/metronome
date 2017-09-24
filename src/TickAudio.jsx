@@ -11,7 +11,7 @@ class TickAudio extends Component {
 
         this._audio = new Audio(soundFile);
         this._audio.load();
-        this._audio.volume = 1;
+        this._audio.volume = prop.volume;
     }
 
     render() {
@@ -20,11 +20,14 @@ class TickAudio extends Component {
 
     play = () => {
         //var audio = new Audio(soundFile);
-        var audio = this._audio;
         //audio.load();
         //audio.volume = 0.5;
-        //audio.volume = 1;
-        audio.play();
+        //audio.volume = _audio
+        this._audio.play();
+    }
+
+    setVolume = (value) => {
+        this._audio.volume = value;
     }
 }
 
