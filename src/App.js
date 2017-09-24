@@ -34,7 +34,7 @@ class App extends Component {
         </p>
 
         <Inputs ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
-        <Metronome ref={(m) => { this._metronome = m; }} onTick={this.metronomeClick} tempo={100} />
+        <Metronome ref={(m) => { this._metronome = m; }} onTick={this.onMetronomeClick} tempo={100} />
         <Audio ref={(component) => { this._tick = component; }} />
 
         <PlayButton onClick={this.onPlayButtonClick} />
@@ -44,32 +44,18 @@ class App extends Component {
 
   onPlayButtonClick = (state) => {
     if (state === 1) {
-      this.start();
+      this._metronome.start();
     } else {
-      this.stop();
+      this._metronome.stop();
     }
   }
 
   /**
    * Play the sound.
    */
-  tick = () => {
-    //console.log('tick!');
-    this._tick.play();
-  }
-
-  start = () => {
-    this._metronome.start();
-  }
-
-  stop = () => {
-    this._metronome.stop();
-  }
-
-  metronomeClick = () => {
+  onMetronomeClick = () => {
     // signal received from the metronome.
-    // play sound
-    this.tick();
+    this._tick.play();
   }
 
   onTempoChanged = (tempo) => {
