@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
-import soundFile from './tick.wav';
+import soundFile from 'static/tick.mp3';
 
 class Tick extends Component {
     constructor(prop) {

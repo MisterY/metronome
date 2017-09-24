@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import soundFile from './tick.mp3';
+import soundFile from './static/tick_9.mp3';
 
 /**
  * A very simple wrapper around the Audio HTML element.
