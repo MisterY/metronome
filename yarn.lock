@@ -5118,6 +5118,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-canvas-knob@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-canvas-knob/-/react-canvas-knob-0.4.0.tgz#fc0276adb8a9cf4e6ed96c611060429260826b0a"
+
 react-dev-utils@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.0.1.tgz#106ae3d29f811c169d459bb9215a5933b7e11fb6"

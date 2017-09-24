@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Knob from 'react-canvas-knob';
 
 class Inputs extends Component {
     constructor(prop) {
@@ -15,39 +16,56 @@ class Inputs extends Component {
         return (
             <div>
                 <div>Tempo</div>
-                <input type='number' defaultValue={this.state.tempo} onBlur={this.onTempoBlur} onChange={e => this.onTempoChanged(e)} onClick={e => this.onTempoClicked(e)} />
 
+                <Knob
+                    value={this.state.tempo}
+                    onChange={this.changeTempo}
+                    onChangeEnd={this.notifyParent}
+                    min={20}
+                    max={300}
+                    value={this.state.tempo}
+                    thickness={0.15}
+                    fgColor="black"
+                    angleArc={330}
+                    angleOffset={-165}
+                />
+
+                {/* <input type='number' defaultValue={this.state.tempo} onBlur={this.onTempoBlur} onChange={e => this.onTempoChanged(e)} onClick={e => this.onTempoClicked(e)} /> */}
             </div>
         );
     }
 
-    // onTempoBlur(e) {
-    //     console.log('blurrrrr');
+    /**
+     * Saves the new tempo value and notifies the parent.
+     */
+    changeTempo = (newValue) => {
+        //console.log(newValue);
+        this.setState({ tempo: newValue });
+    }
+
+    notifyParent = () => {
+        this._tempoChanged(this.state.tempo);
+    }
+
+    // onTempoBlur = (e) => {
+    //     console.log('tempo set to ' + this.state.tempo);
+    //     // notify the parent
+    //     this._tempoChanged(this.state.tempo);
     // }
-    onTempoBlur = (e) => {
-        console.log('tempo set to ' + this.state.tempo);
-        // notify the parent
-        this._tempoChanged(this.state.tempo);
-    }
 
-    onTempoChanged = (e) => {
-        var tempo = e.target.value;
+    // onTempoChanged = (e) => {
+    //     var tempo = e.target.value;
+    //     console.log('changing tempo to ' + tempo);
+    //     this.setState({ tempo: tempo });
+    // }
 
-        console.log('changing tempo to ' + tempo);
-        
-        this.setState({ tempo: tempo });
-    }
-
-    onTempoClicked = (e) => {
-        var tempo = e.target.value;
-
-        console.log('changing tempo to ' + tempo);
-        
-        this.setState({ tempo: tempo });
-        
-        // update immediately when changing the tempo by clicking.
-        this._tempoChanged(this.state.tempo);
-    }
+    // onTempoClicked = (e) => {
+    //     var tempo = e.target.value;
+    //     console.log('changing tempo to ' + tempo);
+    //     this.setState({ tempo: tempo });
+    //     // update immediately when changing the tempo by clicking.
+    //     this._tempoChanged(this.state.tempo);
+    // }
 
     // This syntax ensures `this` is bound within handleClick.
     // Warning: this is *experimental* syntax.
