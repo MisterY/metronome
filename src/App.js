@@ -9,8 +9,9 @@ import Audio from './TickAudio';
 //import ReactAudioPlayer from 'react-audio-player';
 //import SimpleAudio from './SimpleAudio';
 import Metronome from './Metronome';
-
+import { Button, ButtonGroup } from 'reactstrap';
 //let MetronomeWorker = require("Worker.js");
+var FontAwesome = require('react-fontawesome');
 
 class App extends Component {
   // constructor(prop) {
@@ -38,6 +39,14 @@ class App extends Component {
 
         <button onClick={this.tick}>Tick</button>
         <div>
+          <Button>
+            <FontAwesome
+              className='super-crazy-colors'
+              name='rocket'
+              size='2x'
+              spin
+              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }} />
+            Start</Button>
           <button onClick={this.start}>Start</button>
           <button onClick={this.stop}>Stop</button>
         </div>
