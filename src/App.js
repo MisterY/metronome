@@ -7,6 +7,7 @@ import Inputs from './Inputs';
 import Audio from './TickAudio';
 //import ReactAudioPlayer from 'react-audio-player';
 //import SimpleAudio from './SimpleAudio';
+import Metronome from './Metronome';
 
 class App extends Component {
   constructor(prop) {
@@ -16,6 +17,7 @@ class App extends Component {
     this.state = {
       //tempo: 100
     }
+    this._metronome = new Metronome();
   }
 
   render() {
