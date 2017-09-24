@@ -42,7 +42,7 @@ class App extends Component {
         <Metronome ref={(m) => { this._metronome = m; }} onTick={this.metronomeClick} tempo={100} />
         <Audio ref={(component) => { this._tick = component; }} />
 
-        <button onClick={this.tick}>Tick</button>
+        {/* <button onClick={this.tick}>Tick</button> */}
         <div>
           <Button
             onClick={this.onPlayClicked}
@@ -55,7 +55,7 @@ class App extends Component {
               style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
             />
             &nbsp;{this.state.playTitle}
-            </Button>
+          </Button>
         </div>
       </div>
     );
@@ -80,7 +80,7 @@ class App extends Component {
     this._running = true;
     // update UI
     this._playButton.hidden = true;
-    this.setState({ playTitle: "Stop"});
+    this.setState({ playTitle: "Stop" });
   }
 
   stop = () => {
@@ -89,7 +89,7 @@ class App extends Component {
     this._metronome.stop();
 
     this._running = false;
-    this.setState({ playTitle: "Play"});
+    this.setState({ playTitle: "Play" });
   }
 
   metronomeClick = () => {
