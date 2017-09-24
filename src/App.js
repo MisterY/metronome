@@ -41,14 +41,14 @@ class App extends Component {
           This is a metronome implemented in JavaScript using ReactJS.
         </p>
 
-        <Inputs 
-          ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
-        <Metronome 
-          ref={(m) => { this._metronome = m; }} 
+        <Metronome
+          ref={(m) => { this._metronome = m; }}
           onTick={this.onMetronomeClick} tempo={100} />
         <TickAudio
           volume={this.state.volume / 100}
           ref={(component) => { this._tick = component; }} />
+        <Inputs
+          ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
 
         <PlayButton
           ref={(component) => { this._playButton = component; }}
@@ -57,16 +57,16 @@ class App extends Component {
         {/* <div className='slider orientation-reversed'>
           <div className='slider-group'>
             <div className='slider-vertical'> */}
-              <Slider
-                min={0}
-                max={100}
-                value={this.state.volume}
-                orientation="vertical"
-                //onChangeStart={this.handleChangeStart}
-                onChange={this.changeVolume}
-                //onChangeComplete={this.handleChangeComplete} 
-                />
-            {/* </div>
+        <Slider
+          min={0}
+          max={100}
+          value={this.state.volume}
+          orientation="vertical"
+          //onChangeStart={this.handleChangeStart}
+          onChange={this.changeVolume}
+        //onChangeComplete={this.handleChangeComplete} 
+        />
+        {/* </div>
           </div>
         </div> */}
 
@@ -77,7 +77,7 @@ class App extends Component {
   changeVolume = (value) => {
     console.log("volume: " + value);
 
-    this.setState({ volume: value});
+    this.setState({ volume: value });
     this._tick.setVolume(value / 100);
   }
 
