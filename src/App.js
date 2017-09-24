@@ -16,7 +16,7 @@ class App extends Component {
     super(prop);
 
     this.state = {
-      volume: 75
+      volume: 80
     };
   }
 
@@ -54,20 +54,21 @@ class App extends Component {
           ref={(component) => { this._playButton = component; }}
           onClick={this.onPlayButtonClick} />
 
-        <div className='slider orientation-reversed'>
+        {/* <div className='slider orientation-reversed'>
           <div className='slider-group'>
-            <div className='slider-vertical'>
+            <div className='slider-vertical'> */}
               <Slider
                 min={0}
                 max={100}
                 value={this.state.volume}
                 orientation="vertical"
-                onChangeStart={this.handleChangeStart}
+                //onChangeStart={this.handleChangeStart}
                 onChange={this.changeVolume}
-                onChangeComplete={this.handleChangeComplete} />
-            </div>
+                //onChangeComplete={this.handleChangeComplete} 
+                />
+            {/* </div>
           </div>
-        </div>
+        </div> */}
 
       </div>
     );
