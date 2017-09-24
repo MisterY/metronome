@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Knob from 'react-canvas-knob';
+import { Button, ButtonGroup } from 'reactstrap';
 
 class Inputs extends Component {
     constructor(prop) {
         super(prop);
 
-        // This binding is necessary to make `this` work in the callback
         this.state = {
             tempo: prop.tempo ? prop.tempo : 100
         }
@@ -17,10 +17,18 @@ class Inputs extends Component {
             <div>
                 <h2>Tempo</h2>
 
-                <div> 
-                    - Andante - 
+                <div>
+                    <ButtonGroup>
+                        <Button color="link">Lento</Button>
+                        <Button color="link">Adagio</Button>
+                        <Button color="link">Andantino</Button>
+                        <Button color="link">Andante (76–108 bpm)</Button>
+                        <Button color="link">Moderato</Button>
+                        <Button color="link" onClick={() => { this.setTextualTempo("Allegro"); }}>Allegro</Button>
+                        <Button color="link">Allegretto</Button>
+                        <Button color="link">Allegro assai</Button>
+                    </ButtonGroup>
                 </div>
-
                 <Knob
                     value={this.state.tempo}
                     onChange={this.changeTempo}
@@ -53,31 +61,19 @@ class Inputs extends Component {
         this._tempoChanged(this.state.tempo);
     }
 
-    // onTempoBlur = (e) => {
-    //     console.log('tempo set to ' + this.state.tempo);
-    //     // notify the parent
-    //     this._tempoChanged(this.state.tempo);
-    // }
+    setTextualTempo = (tempoName) => {
+        var tempo;
 
-    // onTempoChanged = (e) => {
-    //     var tempo = e.target.value;
-    //     console.log('changing tempo to ' + tempo);
-    //     this.setState({ tempo: tempo });
-    // }
-
-    // onTempoClicked = (e) => {
-    //     var tempo = e.target.value;
-    //     console.log('changing tempo to ' + tempo);
-    //     this.setState({ tempo: tempo });
-    //     // update immediately when changing the tempo by clicking.
-    //     this._tempoChanged(this.state.tempo);
-    // }
-
-    // This syntax ensures `this` is bound within handleClick.
-    // Warning: this is *experimental* syntax.
-    // handleClick = () => {
-    //     console.log('this is:', this);
-    // }
+        switch (tempoName) {
+            case "Andante":
+                tempo = 90;
+                break;
+            case "Allegro":
+                tempo = 130;
+                break;
+        }
+        this.changeTempo(tempo);
+    }
 }
 
 export default Inputs;
