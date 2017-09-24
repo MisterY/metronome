@@ -8,7 +8,7 @@ echo cleaning up.
 :: clean up first
 ::del /q %destination%\*
 :: delete all files except CNAME
-for %%i in (*) do if not %%i == CNAME del %%i
+for %%i in (%destination%\*) do if not %%i == CNAME del %%i
 :: clean subdirectories
 for /d %%x in (%destination%\*) do @rd /s /q "%%x"
 
