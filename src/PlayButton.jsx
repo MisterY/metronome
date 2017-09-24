@@ -19,7 +19,7 @@ class PlayButton extends Component {
     render() {
         return (
             <Button
-                onClick={this.onPlayClicked}
+                onClick={this.toggle}
                 ref={(component) => { this._playButton = component; }} >
                 <FontAwesome
                     //className='super-crazy-colors'
@@ -33,7 +33,7 @@ class PlayButton extends Component {
         );
     }
 
-    onPlayClicked = (e) => {
+    toggle = () => {
         if (!this._running) {
             this.start();
         } else {

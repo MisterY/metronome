@@ -10,7 +10,7 @@ import Audio from './TickAudio';
 //import SimpleAudio from './SimpleAudio';
 import Metronome from './Metronome';
 import { Button, ButtonGroup } from 'reactstrap';
-//import keydown from 'react-keydown';
+import keydown from 'react-keydown';
 import PlayButton from './PlayButton';
 
 //let MetronomeWorker = require("Worker.js");
@@ -21,12 +21,20 @@ class App extends Component {
   //   super(prop);
   // }
 
-  componentWillReceiveProps( { keydown } ) {
-    if ( keydown.event ) {
-      // inspect the keydown event and decide what to do
-      console.log( keydown.event.which );
-    }
+  componentWillMount = () => {
+    document.addEventListener("keydown", this.onKeyDown, false);
   }
+
+  componentWillUnmount = () => {
+    document.removeEventListener("click", this.onKeyDown, false);
+  }
+
+  // componentWillReceiveProps( { keydown } ) {
+  //   if ( keydown.event ) {
+  //     // inspect the keydown event and decide what to do
+  //     console.log( keydown.event.which );
+  //   }
+  // }
 
   render() {
     return (
@@ -43,11 +51,24 @@ class App extends Component {
 
         <Inputs ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
         <Metronome ref={(m) => { this._metronome = m; }} onTick={this.onMetronomeClick} tempo={100} />
-        <Audio ref={(component) => { this._tick = component; }} />
+        <Audio
+          ref={(component) => { this._tick = component; }} />
 
-        <PlayButton onClick={this.onPlayButtonClick} />
+        <PlayButton
+          ref={(component) => { this._playButton = component; }}
+          onClick={this.onPlayButtonClick} />
       </div>
     );
+  }
+
+  onKeyDown = (e) => {
+    console.log(e);
+
+    switch (e.key) {
+      case " ":
+        this._playButton.toggle();
+        break;
+    }
   }
 
   onPlayButtonClick = (state) => {
