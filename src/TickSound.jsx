@@ -3,12 +3,12 @@ import Sound from 'react-sound';
 import soundFile from './tick.wav';
 
 class Tick extends Component {
-    constructor(props) {
-        super(props);
+    constructor(prop) {
+        super(prop);
 
         this.state = {
-            status: props.playStatus ? props.playStatus : Sound.status.STOPPED,
-            loop: props.loop ? props.loop : false
+            status: prop.playStatus ? prop.playStatus : Sound.status.STOPPED,
+            loop: prop.loop ? prop.loop : false
         };
     }
 

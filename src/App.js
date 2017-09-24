@@ -9,15 +9,21 @@ import Audio from './TickAudio';
 //import SimpleAudio from './SimpleAudio';
 import Metronome from './Metronome';
 
+//let MetronomeWorker = require("Worker.js");
+
 class App extends Component {
   constructor(prop) {
     super(prop);
 
     // initialize options.
-    this.state = {
-      //tempo: 100
-    }
-    this._metronome = new Metronome();
+    // this.state = {
+    //   //tempo: 100
+    // }
+    this._metronome = new Metronome({
+      onTick: this.metronomeClick,
+      tempo: 100
+    });
+    //this._worker = new MetronomeWorker();
   }
 
   render() {
@@ -63,14 +69,19 @@ class App extends Component {
   }
 
   start = () => {
-    // calculate time.
-    //this._ui.getState
-    // fire up interval.
+    this._metronome.start();
   }
 
   stop = () => {
     console.log('stopping');
-    this._tick.stop();
+    //this._tick.stop();
+    this._metronome.stop();
+  }
+
+  metronomeClick = () => {
+    // signal received from the metronome.
+    // play sound
+    this.tick();
   }
 }
 
