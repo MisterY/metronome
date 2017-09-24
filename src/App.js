@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import logo from './static/wittner.jpg';
 import './App.css';
-import Inputs from './Inputs';
+import TempoSelector from './TempoSelector';
 import TickAudio from './TickAudio';
 import Metronome from './Metronome';
 import PlayButton from './PlayButton';
@@ -42,13 +42,13 @@ class App extends Component {
         </p>
 
         <Metronome
-          ref={(m) => { this._metronome = m; }}
+          ref={(x) => { this._metronome = x; }}
           onTick={this.onMetronomeClick} tempo={100} />
         <TickAudio
           volume={this.state.volume / 100}
           ref={(component) => { this._tick = component; }} />
-        <Inputs
-          ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
+        <TempoSelector
+          ref={(x) => { this._tempoSelector = x; }} onTempoChanged={this.onTempoChanged} />
 
         <PlayButton
           ref={(component) => { this._playButton = component; }}
@@ -65,6 +65,7 @@ class App extends Component {
           //onChangeStart={this.handleChangeStart}
           onChange={this.changeVolume}
         //onChangeComplete={this.handleChangeComplete} 
+          ref={(x) => { this._volumeControl = x; }}
         />
         {/* </div>
           </div>
@@ -77,6 +78,12 @@ class App extends Component {
   changeVolume = (value) => {
     console.log("volume: " + value);
 
+    if (value > 100) value = 100;
+    if (value < 0) value = 0;
+
+    // update the control, as this can be triggered both ways.
+    this._volumeControl.value = value;
+
     this.setState({ volume: value });
     this._tick.setVolume(value / 100);
   }
@@ -85,6 +92,22 @@ class App extends Component {
     console.log(e);
 
     switch (e.key) {
+      case "ArrowLeft":
+        // decrease tempo
+        this.onTempoChanged(this._tempoSelector.state.tempo - 1);
+        break;
+      case "ArrowRight":
+        // increase tempo
+        this.onTempoChanged(this._tempoSelector.state.tempo + 1);
+        break;
+      case "ArrowUp":
+        // increase volume
+        this.changeVolume(this.state.volume + 1);
+        break;
+      case "ArrowDown":
+        // reduce volume
+        this.changeVolume(this.state.volume - 1);
+        break;
       case " ":
         this._playButton.toggle();
         break;
@@ -114,8 +137,11 @@ class App extends Component {
   }
 
   onTempoChanged = (tempo) => {
+    if (tempo < 0) tempo = 0;
+    
     // update the metronome
     this._metronome.setTempo(tempo);
+    this._tempoSelector.setTempo(tempo);
   }
 }
 
