@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Knob from 'react-canvas-knob';
 import { Button, ButtonGroup } from 'reactstrap';
+import TempoButton from './TempoButton';
 
 class Inputs extends Component {
     constructor(prop) {
@@ -19,13 +20,19 @@ class Inputs extends Component {
 
                 <div>
                     <ButtonGroup>
-                        <Button color="link">Lento</Button>
-                        <Button color="link">Adagio</Button>
+                        <TempoButton tempo={30} title="Grave" onSelect={this.setTempo} />
+                        <TempoButton tempo={40} title="Largo" onSelect={this.setTempo} />
+                        <TempoButton tempo={50} title="Lento" onSelect={this.setTempo} />
+                        <TempoButton tempo={70} title="Adagio" onSelect={this.setTempo} />
+                        <TempoButton tempo={95} title="Andante" onSelect={this.setTempo} />
                         <Button color="link">Andantino</Button>
-                        <Button color="link">Andante (76–108 bpm)</Button>
-                        <Button color="link">Moderato</Button>
-                        <Button color="link" onClick={() => { this.setTextualTempo("Allegro"); }}>Allegro</Button>
-                        <Button color="link">Allegretto</Button>
+                        <TempoButton tempo={112} title="Moderato" onSelect={this.setTempo} />
+                        <TempoButton tempo={130} title="Allegretto" onSelect={this.setTempo} />
+                        <TempoButton tempo={143} title="Allegro" onSelect={this.setTempo} />
+                        <TempoButton tempo={163} title="Vivace" onSelect={this.setTempo} />
+                        <TempoButton tempo={180} title="Presto" onSelect={this.setTempo} />
+                        <TempoButton tempo={208} title="Prestissimo" onSelect={this.setTempo} />
+
                         <Button color="link">Allegro assai</Button>
                     </ButtonGroup>
                 </div>
@@ -43,8 +50,6 @@ class Inputs extends Component {
                     angleOffset={-165}
                     cursor={true}
                 />
-
-                {/* <input type='number' defaultValue={this.state.tempo} onBlur={this.onTempoBlur} onChange={e => this.onTempoChanged(e)} onClick={e => this.onTempoClicked(e)} /> */}
             </div>
         );
     }
@@ -52,27 +57,13 @@ class Inputs extends Component {
     /**
      * Saves the new tempo value and notifies the parent.
      */
-    changeTempo = (newValue) => {
+    setTempo = (newValue) => {
         //console.log(newValue);
         this.setState({ tempo: newValue });
     }
 
     notifyParent = () => {
         this._tempoChanged(this.state.tempo);
-    }
-
-    setTextualTempo = (tempoName) => {
-        var tempo;
-
-        switch (tempoName) {
-            case "Andante":
-                tempo = 90;
-                break;
-            case "Allegro":
-                tempo = 130;
-                break;
-        }
-        this.changeTempo(tempo);
     }
 }
 
