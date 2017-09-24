@@ -12,3 +12,4 @@ Goals:
 - Mechanical click sound, multiple options available
 - Precision
 - Practical operation (keyboard, mouse)
+- Modern look

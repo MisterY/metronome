@@ -18,7 +18,7 @@ class Inputs extends Component {
                 <h2>Tempo</h2>
 
                 <div> 
-
+                    - Andante - 
                 </div>
 
                 <Knob
@@ -33,6 +33,7 @@ class Inputs extends Component {
                     bgColor="darkgray"
                     angleArc={330}
                     angleOffset={-165}
+                    cursor={true}
                 />
 
                 {/* <input type='number' defaultValue={this.state.tempo} onBlur={this.onTempoBlur} onChange={e => this.onTempoChanged(e)} onClick={e => this.onTempoClicked(e)} /> */}

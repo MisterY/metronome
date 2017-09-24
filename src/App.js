@@ -32,7 +32,9 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>My Metronome</h1>
+          <div style={{ marginLeft: 2 + "em" }}>
+            <h1>My Metronome</h1>
+          </div>
         </div>
         <p className="App-intro">
           This is a JavaScript metronome.
