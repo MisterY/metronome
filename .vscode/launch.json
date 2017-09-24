@@ -1,6 +1,16 @@
 {
-    "version": "0.2.0",
-    "configurations": [{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Firefox index.html",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      //"file": "${workspaceRoot}/index.html"
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceRoot}"
+    },
+    {
       "name": "Chrome",
       "type": "chrome",
       "request": "launch",
@@ -10,6 +20,6 @@
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }
-    }]
-  }
-  
+    }
+  ]
+}

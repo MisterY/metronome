@@ -34,23 +34,12 @@ class App extends Component {
           <h1>My Metronome</h1>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          This is a JavaScript metronome.
         </p>
 
-        {/* <Click ref={(component) => { this._tick = component; }} /> */}
-        {/* <ReactAudioPlayer
-          src={soundFile}
-          autoPlay={false}
-          ref={(player) => { this._tick = player; }}
-          onPlay={() => console.log('playing?')}
-          onError={() => console.log('error')}
-          preload='auto'
-          controls
-        /> */}
-        {/* controls loop={true} */}
         {/* <SimpleAudio ref={(component) => { this._tick = component; }}  /> */}
 
-        <Inputs ref={(ui) => { this._ui = ui; }} />
+        <Inputs ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
 
         <Audio ref={(component) => { this._tick = component; }} />
 
@@ -64,7 +53,7 @@ class App extends Component {
   }
 
   tick = () => {
-    console.log('tick!');
+    //console.log('tick!');
     this._tick.play();
   }
 
@@ -82,6 +71,11 @@ class App extends Component {
     // signal received from the metronome.
     // play sound
     this.tick();
+  }
+
+  onTempoChanged = (tempo) => {
+    // update the metronome
+    this._metronome.setTempo(tempo);
   }
 }
 
