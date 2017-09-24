@@ -10,6 +10,7 @@
     "react-canvas-knob": "^0.4.0",
     "react-dom": "^15.6.1",
     "react-fontawesome": "^1.6.1",
+    "react-keydown": "^1.9.4",
     "react-scripts": "1.0.13",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2"

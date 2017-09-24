@@ -10,18 +10,15 @@ import Audio from './TickAudio';
 //import SimpleAudio from './SimpleAudio';
 import Metronome from './Metronome';
 import { Button, ButtonGroup } from 'reactstrap';
+import keydown from 'react-keydown';
+import PlayButton from './PlayButton';
+
 //let MetronomeWorker = require("Worker.js");
-var FontAwesome = require('react-fontawesome');
 
 class App extends Component {
-  constructor(prop) {
-    super(prop);
-
-    this._running = false;
-    this.state = {
-      playTitle: "Play"
-    };
-  }
+  // constructor(prop) {
+  //   super(prop);
+  // }
 
   render() {
     return (
@@ -36,60 +33,37 @@ class App extends Component {
           This is a metronome implemented in JavaScript using ReactJS.
         </p>
 
-        {/* <SimpleAudio ref={(component) => { this._tick = component; }}  /> */}
-
         <Inputs ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
         <Metronome ref={(m) => { this._metronome = m; }} onTick={this.metronomeClick} tempo={100} />
         <Audio ref={(component) => { this._tick = component; }} />
 
-        {/* <button onClick={this.tick}>Tick</button> */}
-        <div>
-          <Button
-            onClick={this.onPlayClicked}
-            ref={(component) => { this._playButton = component; }} >
-            <FontAwesome
-              //className='super-crazy-colors'
-              name={this.state.playTitle.toLowerCase()}
-              //size='2x'
-              //spin
-              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-            />
-            &nbsp;{this.state.playTitle}
-          </Button>
-        </div>
+        <PlayButton onClick={this.onPlayButtonClick} />
       </div>
     );
   }
 
-  tick = () => {
-    //console.log('tick!');
-    this._tick.play();
-  }
-
-  onPlayClicked = (e) => {
-    if (!this._running) {
+  onPlayButtonClick = (state) => {
+    if (state === 1) {
       this.start();
     } else {
       this.stop();
     }
   }
 
+  /**
+   * Play the sound.
+   */
+  tick = () => {
+    //console.log('tick!');
+    this._tick.play();
+  }
+
   start = () => {
     this._metronome.start();
-
-    this._running = true;
-    // update UI
-    this._playButton.hidden = true;
-    this.setState({ playTitle: "Stop" });
   }
 
   stop = () => {
-    //console.log('stopping');
-
     this._metronome.stop();
-
-    this._running = false;
-    this.setState({ playTitle: "Play" });
   }
 
   metronomeClick = () => {
