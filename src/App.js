@@ -99,6 +99,10 @@ class App extends Component {
     } else {
       this._metronome.stop();
     }
+
+    // Move focus from the play button to avoid double-triggering via keyboard.
+    // todo this._playButton._playButton.blur();
+    document.activeElement.blur();
   }
 
   /**
