@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class TempoButton extends Component {
     constructor(prop) {
         super(prop);
 
-        this._title = prop.title;
+        this.state = {
+            title: prop.title,
+            tempo: prop.tempo
+        };
         this._onSelect = prop.onSelect;
-        this._tempo = prop.tempo;
     }
 
     render() {
         return(
-            <Button color="link" onClick={this.onSelected}>{this._title}</Button>
+            <Button color="link" onClick={this.onSelected}>{this.state.title}</Button>
         );
     }
 
     onSelected = (e) => {
-        this._onSelect(this._tempo);
+        this._onSelect(this.state.tempo);
     }
 }
 

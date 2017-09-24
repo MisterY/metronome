@@ -25,7 +25,7 @@ class Inputs extends Component {
                         <TempoButton tempo={50} title="Lento" onSelect={this.setTempo} />
                         <TempoButton tempo={70} title="Adagio" onSelect={this.setTempo} />
                         <TempoButton tempo={95} title="Andante" onSelect={this.setTempo} />
-                        <Button color="link">Andantino</Button>
+                        <TempoButton tempo={100} title="Andantino" onSelect={this.setTempo} />
                         <TempoButton tempo={112} title="Moderato" onSelect={this.setTempo} />
                         <TempoButton tempo={130} title="Allegretto" onSelect={this.setTempo} />
                         <TempoButton tempo={143} title="Allegro" onSelect={this.setTempo} />
@@ -38,11 +38,10 @@ class Inputs extends Component {
                 </div>
                 <Knob
                     value={this.state.tempo}
-                    onChange={this.changeTempo}
-                    onChangeEnd={this.notifyParent}
+                    onChange={this.setTempo}
+                    onChangeEnd={this.setTempo}
                     min={20}
                     max={250}
-                    value={this.state.tempo}
                     thickness={0.15}
                     fgColor="black"
                     bgColor="darkgray"
@@ -58,12 +57,10 @@ class Inputs extends Component {
      * Saves the new tempo value and notifies the parent.
      */
     setTempo = (newValue) => {
-        //console.log(newValue);
-        this.setState({ tempo: newValue });
-    }
+        console.log("Input:selected tempo " + newValue);
 
-    notifyParent = () => {
-        this._tempoChanged(this.state.tempo);
+        this.setState({ tempo: newValue });
+        this._tempoChanged(newValue);
     }
 }
 

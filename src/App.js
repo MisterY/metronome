@@ -13,19 +13,9 @@ import Metronome from './Metronome';
 //let MetronomeWorker = require("Worker.js");
 
 class App extends Component {
-  constructor(prop) {
-    super(prop);
-
-    // initialize options.
-    // this.state = {
-    //   //tempo: 100
-    // }
-    this._metronome = new Metronome({
-      onTick: this.metronomeClick,
-      tempo: 100
-    });
-    //this._worker = new MetronomeWorker();
-  }
+  // constructor(prop) {
+  //   super(prop);
+  // }
 
   render() {
     return (
@@ -43,7 +33,7 @@ class App extends Component {
         {/* <SimpleAudio ref={(component) => { this._tick = component; }}  /> */}
 
         <Inputs ref={(ui) => { this._ui = ui; }} onTempoChanged={this.onTempoChanged} />
-
+        <Metronome ref={(m) => { this._metronome = m; }} onTick={this.metronomeClick} tempo={100} />
         <Audio ref={(component) => { this._tick = component; }} />
 
         <button onClick={this.tick}>Tick</button>
