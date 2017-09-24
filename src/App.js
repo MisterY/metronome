@@ -14,9 +14,14 @@ import { Button, ButtonGroup } from 'reactstrap';
 var FontAwesome = require('react-fontawesome');
 
 class App extends Component {
-  // constructor(prop) {
-  //   super(prop);
-  // }
+  constructor(prop) {
+    super(prop);
+
+    this._running = false;
+    this.state = {
+      playTitle: "Play"
+    };
+  }
 
   render() {
     return (
@@ -40,19 +45,17 @@ class App extends Component {
         <button onClick={this.tick}>Tick</button>
         <div>
           <Button
+            onClick={this.onPlayClicked}
             ref={(component) => { this._playButton = component; }} >
             <FontAwesome
               //className='super-crazy-colors'
-              name='play'
+              name={this.state.playTitle.toLowerCase()}
               //size='2x'
               //spin
               style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-              onClick={this.onPlayClicked}
             />
-            &nbsp;Start
+            &nbsp;{this.state.playTitle}
             </Button>
-          <button onClick={this.start}>Start</button>
-          <button onClick={this.stop}>Stop</button>
         </div>
       </div>
     );
@@ -64,22 +67,29 @@ class App extends Component {
   }
 
   onPlayClicked = (e) => {
-    // track state
-    this.start()
-    // or stop()
+    if (!this._running) {
+      this.start();
+    } else {
+      this.stop();
+    }
   }
 
   start = () => {
     this._metronome.start();
 
+    this._running = true;
     // update UI
-    //this._playButton.
+    this._playButton.hidden = true;
+    this.setState({ playTitle: "Stop"});
   }
 
   stop = () => {
-    console.log('stopping');
-    //this._tick.stop();
+    //console.log('stopping');
+
     this._metronome.stop();
+
+    this._running = false;
+    this.setState({ playTitle: "Play"});
   }
 
   metronomeClick = () => {
