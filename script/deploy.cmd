@@ -6,10 +6,13 @@ set destination=..\docs
 
 echo cleaning up.
 :: clean up first
-del /q %destination%\*
+::del /q %destination%\*
+:: delete all files except CNAME
+for %%i in (*) do if not %%i == CNAME del %%i
+:: clean subdirectories
 for /d %%x in (%destination%\*) do @rd /s /q "%%x"
 
-echo press any key to deploy
+echo Ready to copy new files.
 pause
 
 :: copy newly generated content
@@ -17,3 +20,5 @@ xcopy ..\build\* %destination% /e
 
 :: manual adjustment
 del %destination%\favicon.ico.bak
+
+echo Now commit and push the files to GitHub.
