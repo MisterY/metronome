@@ -40,6 +40,8 @@ class Metronome extends Component {
 
     stop = () => {
         clearInterval(this._intervalId);
+        // reset id
+        this._intervalId = 0;
     }
 
     onInterval = () => {
