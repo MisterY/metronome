@@ -1,6 +1,7 @@
 :: after the build, move the files to /docs folder and commit. They will be published to GitHub Pages automatically.
 
 @echo off
+cls 
 
 set destination=..\docs
 
@@ -8,11 +9,11 @@ echo cleaning up.
 :: clean up first
 ::del /q %destination%\*
 :: delete all files except CNAME
-for %%i in (%destination%\*) do if not %%i == CNAME del %%i
+for %%i in (%destination%\*) do if not %%i == ..\docs\CNAME del %%i
 :: clean subdirectories
 for /d %%x in (%destination%\*) do @rd /s /q "%%x"
 
-echo Ready to copy new files.
+echo The destination cleared. Ready to copy the new files.
 pause
 
 :: copy newly generated content
