@@ -65,7 +65,7 @@ class App extends Component {
                 ref={(x) => { this._tempoKnob = x; }}
                 tempo={this.state.tempo} onTempoChanged={this.onTempoChanged} />
             </Col>
-            <Col xs="4" style={{ display: "flex", flexDirection: "column", justifyContent: "center", justifyContent: "center" }}>
+            <Col xs="4" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <PlayButton
                 ref={(component) => { this._playButton = component; }}
                 onClick={this.onPlayButtonClick} />
