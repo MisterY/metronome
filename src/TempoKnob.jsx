@@ -5,18 +5,16 @@ class TempoKnob extends Component {
     constructor(prop) {
         super(prop);
 
-        // this.state = {
-        //     tempo: prop.tempo
-        // }
-        this._tempo = prop.tempo;
+        this.state = {
+            tempo: prop.tempo
+        }
         this._tempoChanged = prop.onTempoChanged;
     }
 
     render() {
         return (
             <Knob
-                //value={this.state.tempo}
-                value = {this._tempo}
+                value={this.state.tempo}
                 onChange={this.onTempoSelected}
                 onChangeEnd={this.onTempoSelected}
                 min={20}
@@ -32,8 +30,7 @@ class TempoKnob extends Component {
     }
 
     onTempoSelected = (value) => {
-        //this.setState({ tempo: value });
-        this._tempo = value;
+        this.setState({ tempo: value });
         this._tempoChanged(value);
     }
 
@@ -44,8 +41,7 @@ class TempoKnob extends Component {
         //console.log("Input:selected tempo " + newValue);
         if (value === this._tempo) return;
 
-        //this.setState({ tempo: value });
-        this._tempo = value;
+        this.setState({ tempo: value });
     }
 
 }
