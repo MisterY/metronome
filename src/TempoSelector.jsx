@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Knob from 'react-canvas-knob';
 import { ButtonGroup } from 'reactstrap';
 import TempoButton from './TempoButton';
 
@@ -8,7 +7,7 @@ class Inputs extends Component {
         super(prop);
 
         this.state = {
-            tempo: prop.tempo ? prop.tempo : 100
+            tempo: prop.tempo
         }
         this._tempoChanged = prop.onTempoChanged;
     }
@@ -51,19 +50,6 @@ class Inputs extends Component {
                         <TempoButton tempo={230} title="Vivacissimo" onSelect={this.onTempoSelected} />
                     </ButtonGroup>
                 </div>
-                <Knob
-                    value={this.state.tempo}
-                    onChange={this.onTempoSelected}
-                    onChangeEnd={this.onTempoSelected}
-                    min={20}
-                    max={250}
-                    thickness={0.15}
-                    fgColor="black"
-                    bgColor="darkgray"
-                    angleArc={330}
-                    angleOffset={-165}
-                    cursor={true}
-                />
             </div>
         );
     }
@@ -73,6 +59,7 @@ class Inputs extends Component {
      */
     setTempo = (value) => {
         //console.log("Input:selected tempo " + newValue);
+        if (value === this.state.tempo) return;
 
         this.setState({ tempo: value });
     }
