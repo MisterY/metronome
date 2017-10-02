@@ -10,6 +10,7 @@ import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
 import { Container, Row, Col } from 'reactstrap';
 import TempoKnob from './TempoKnob';
+import Footer from './Footer';
 
 //let MetronomeWorker = require("Worker.js");
 
@@ -86,6 +87,7 @@ class App extends Component {
           </Row>
         </Container>
 
+        <Footer />
       </div >
     );
   }
