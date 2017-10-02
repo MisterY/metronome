@@ -12,7 +12,7 @@
     "react-fontawesome": "^1.6.1",
     "react-rangeslider": "^2.2.0",
     "react-scripts": "1.0.13",
-    "reactstrap": "^4.8.0",
+    "reactstrap": "^5.0.0-alpha.2",
     "redux": "^3.7.2"
   },
   "scripts": {

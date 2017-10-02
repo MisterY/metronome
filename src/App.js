@@ -8,7 +8,7 @@ import Metronome from './Metronome';
 import PlayButton from './PlayButton';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Card, CardTitle, CardBlock } from 'reactstrap';
 import TempoKnob from './TempoKnob';
 import Footer from './Footer';
 
@@ -59,7 +59,7 @@ class App extends Component {
         <TempoSelector
           ref={(x) => { this._tempoSelector = x; }} onTempoChanged={this.onTempoChanged} />
 
-        <Container>
+        <Container style={{ paddingTop: "2em" }}>
           <Row>
             <Col xs="4">
               <TempoKnob
@@ -72,17 +72,21 @@ class App extends Component {
                 onClick={this.onPlayButtonClick} />
             </Col>
             <Col xs="4">
-              Volume
-              <Slider
-                min={0}
-                max={100}
-                value={this.state.volume}
-                orientation="vertical"
-                //onChangeStart={this.handleChangeStart}
-                onChange={this.changeVolume}
-                //onChangeComplete={this.handleChangeComplete} 
-                ref={(x) => { this._volumeControl = x; }}
-              />
+              <Card block inverse style={{ color: "beige", backgroundColor: 'gray', borderColor: '#333' }} >
+                <CardTitle>Volume</CardTitle>
+                <CardBlock>
+                  <Slider
+                    min={0}
+                    max={100}
+                    value={this.state.volume}
+                    orientation="vertical"
+                    //onChangeStart={this.handleChangeStart}
+                    onChange={this.changeVolume}
+                    //onChangeComplete={this.handleChangeComplete} 
+                    ref={(x) => { this._volumeControl = x; }}
+                  />
+                </CardBlock>
+              </Card>
             </Col>
           </Row>
         </Container>
